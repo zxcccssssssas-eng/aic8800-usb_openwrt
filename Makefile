@@ -5,7 +5,7 @@ PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/shenmintao/aic8800dc.git
+PKG_SOURCE_URL:=https://github.com/shenmintao/aic8800d80.git
 PKG_SOURCE_VERSION:=345197236448de0369bdec93986b5718a6f04529 
 
 PKG_MIRROR_HASH:=
@@ -45,7 +45,7 @@ endef
 
 define KernelPackage/aic8800-usb-shenmintao/install
 	$(INSTALL_DIR) $(1)/lib/firmware/aic8800DC
-	$(CP) $(PKG_BUILD_DIR)/fw/aic8800DC/*.bin $(1)/lib/firmware/aic8800DC/
+	$(CP) $(PKG_BUILD_DIR)/fw/aic8800D80/*.bin $(1)/lib/firmware/aic8800D80/
 endef
 
 $(eval $(call KernelPackage,aic8800-usb-shenmintao))
