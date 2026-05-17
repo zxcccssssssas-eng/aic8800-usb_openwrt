@@ -1,16 +1,16 @@
-# Tenda AIC8800 Linux Driver for OpenWrt (24.10.x)
+# UGREEN AX900 / RADXA CUBIE A7A WIFI Linux Driver for OpenWrt (24.10.x)
 
 ## Description
 This repository contains the modified Tenda AIC8800 USB WiFi driver to support OpenWrt (24.10.x).
 
 ## Features
-- Support for Tenda AX300 USB WiFi adapter
+- Support for UGREEN AX900 / RADXA CUBIE A7A WIFI WiFi adapter
 - Compatible with Linux kernel 6.6.x
 - Modified from official Tenda Debian package
 
 ## Requirements
 - Linux
-- Tenda AX300 USB WiFi adapter
+- UGREEN AX900 / RADXA CUBIE A7A
 - Openwrt SDK/Sources
 
 ## Installation
