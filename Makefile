@@ -6,11 +6,17 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/shenmintao/aic8800d80.git
+# issue-76-openwrt-cfg80211 branch HEAD: cfg80211 backport ABI fixes for OpenWrt
+PKG_SOURCE_VERSION:=bef3cc252f29b21f2e25bbc2cbbd737cd4fa6e65
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_SOURCE_SUBDIR).tar.zst
 
 PKG_MIRROR_HASH:=
 
 PKG_MAINTAINER:=NickBash11 <nybash110998@gmail.com>
 PKG_LICENSE:=GPL-2.0
+
+STAMP_CONFIGURED_DEPENDS := $(STAGING_DIR)/usr/include/mac80211-backport/backport/autoconf.h
 
 include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/package.mk
@@ -38,6 +44,7 @@ define Build/Compile
 		$(KERNEL_MAKE_FLAGS) \
 		M="$(PKG_BUILD_DIR)/drivers/aic8800/" \
 		KBUILD_EXTRA_SYMBOLS="$(LINUX_DIR)/../symvers/mac80211.symvers" \
+		NOSTDINC_FLAGS="$(KERNEL_NOSTDINC_FLAGS) -I$(STAGING_DIR)/usr/include/mac80211-backport/uapi -I$(STAGING_DIR)/usr/include/mac80211-backport -I$(STAGING_DIR)/usr/include/mac80211/uapi -I$(STAGING_DIR)/usr/include/mac80211 -include backport/autoconf.h -include backport/backport.h" \
 		CFLAGS_MODULE="-g" \
 		modules
 endef
